@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/quote.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/scripts/script.js"></script>
+    <title>Mongoose Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Mongoose World!</h1>
+        <a href="/mongooses/new">Create New Mongoose</a>
+        <hr>
+        <% if (mongooses.length > 0) { %>
+            <% for (var mong in mongooses) { %>
+                <p>Name: <a href="/mongooses/edit/<%= mongooses[mong].id%>"><%= mongooses[mong].name %></a></p>
+                <p>Weight: <%= mongooses[mong].weight %></p>
+                <p>Length: <%= mongooses[mong].length %></p>
+                <p>Country: <%= mongooses[mong].country %></p>
+                <form action="/mongooses/destroy/<%= mongooses[mong].id %>" method="post">
+                    <button type="submit">Remove</button>
+                </form>
+                <hr>
+            <% } %>
+        <% } %>    
+    </div>
+</body>
+</html>
